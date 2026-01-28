@@ -14,7 +14,7 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", foodRouter);
-app.use("/auth", authenticationRouter);
+// app.use("/auth", authenticationRouter);
 app.use("/food-category", foodCategoryRouter);
 app.use("/food-order", foodOrderRouter);
 // app.use("./food-cart", foodCartRouter);

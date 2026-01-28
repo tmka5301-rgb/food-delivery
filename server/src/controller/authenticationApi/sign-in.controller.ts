@@ -7,7 +7,7 @@ export const signInController = async (req: Request, res: Response) => {
     const userAPI = await UserModel.create({ email });
     if (!userAPI) return res.status(404).send({ message: "user not found" });
     if (userAPI.password !== password)
-      return res.status(401).send({ message: "invalid password" });
+      return res.status(401).send({ message: "user not found" });
 
     res
       .status(200)
