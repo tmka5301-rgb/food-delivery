@@ -1,8 +1,13 @@
 import { Router } from "express";
-import { createNewFood, deleteFood, updateFoodList } from "../controller/foods";
+
+import { getFoodCategoryById } from "../controller/foodAPI/get-food-by-categoryId.controller";
+import { getFoodById } from "../controller/foodAPI/get-food-by-id.controller";
+import { createNewFood, deleteFood, updateFood } from "../controller/foodAPI";
 
 export const foodRouter = Router();
 
-foodRouter.post("/create-new-food", createNewFood);
-foodRouter.delete("/food-by-id", deleteFood);
-foodRouter.put("./update-food", updateFoodList);
+foodRouter.get("/:category", getFoodCategoryById);
+foodRouter.get("/", getFoodById);
+foodRouter.patch("/:foodId", updateFood);
+foodRouter.delete("/:foodId", deleteFood);
+foodRouter.post("./", createNewFood);
