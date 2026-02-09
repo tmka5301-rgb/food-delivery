@@ -8,7 +8,7 @@ import { foodCategoryRouter } from "./routers/food.category.router";
 import { foodOrderRouter } from "./routers/food.order";
 
 configDotenv();
-const port = 8000;
+const port = 10000;
 const app: Application = express();
 
 app.use(cors());
@@ -22,3 +22,4 @@ app.listen(port, async () => {
   await connectToMongoDB();
   console.log(`Server is running on port ${port}`);
 });
+

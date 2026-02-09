@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { configDotenv } from "dotenv";
+import { Resend } from "resend";
 
 configDotenv();
 
@@ -13,10 +14,12 @@ const transport = nodemailer.createTransport({
   },
 });
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export const verifyUserEmail = async (receiver: string, verifyLink: string) => {
   console.log(receiver, verifyLink);
   await transport.sendMail({
-    from: `Food Delivery ${AUTH_EMAIL}`,
+    from: "onboarding@resend.dev",
     to: receiver,
     subject: "Verify user",
     html: `<div
@@ -32,4 +35,3 @@ export const verifyUserEmail = async (receiver: string, verifyLink: string) => {
 `,
   });
 };
-
