@@ -14,7 +14,7 @@ export const FoodSchema = new Schema<FoodType>(
     price: { type: Number, required: true },
     image: { type: String, required: true },
     ingredients: [{ type: String, required: true }],
-    category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+    category: { type: Schema.Types.ObjectId, ref: "Category" },
   },
   { timestamps: true },
 );

@@ -3,16 +3,17 @@ import { FoodModel } from "../../models/food.model";
 
 export const createNewFood = async (req: Request, res: Response) => {
   try {
-    const { picture, ingredients, name, price } = req.body;
+    const { foodName, price, image, ingredients, category } = req.body;
     const foodAPI = await FoodModel.create({
-      picture,
-      ingredients,
-      name,
+      foodName,
       price,
+      image,
+      ingredients,
+      category,
     });
     res.status(200).send({ message: "List created", data: foodAPI });
   } catch (error) {
     console.log(error);
-    res.status(200).send(error);
+    res.status(400).send(error);
   }
 };

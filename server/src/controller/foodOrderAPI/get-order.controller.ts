@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { FoodCategoryModel, FoodOrderModel } from "../../models";
+import { FoodOrderModel } from "../../models";
 
 export const getOrder = async (req: Request, res: Response) => {
   try {
     const { user, totalPrice, foodOrderItems, status } = req.body;
-    const foodOrderAPI = await FoodOrderModel.findOneAndUpdate({
+    const foodOrderAPI = await FoodOrderModel.findById({
       user,
       totalPrice,
       foodOrderItems,
