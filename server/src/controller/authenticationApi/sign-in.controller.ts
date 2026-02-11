@@ -13,7 +13,7 @@ export const signInController = async (req: Request, res: Response) => {
       return res.status(401).send({ message: "Email or Password boldguee" });
 
     const tokenSignIn = jwt.sign({ _id: userAPI._id }, "SecretToken", {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
 
     res
