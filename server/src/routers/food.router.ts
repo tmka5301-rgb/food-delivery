@@ -4,6 +4,7 @@ import { getFoodCategoryById } from "../controller/foodAPI/get-food-by-categoryI
 import { getFoodById } from "../controller/foodAPI/get-food-by-id.controller";
 import { createNewFood, deleteFood, updateFood } from "../controller/foodAPI";
 import { authentication, authorization } from "../middlewares";
+import { UserRole } from "../models";
 
 export const foodRouter = Router();
 
@@ -11,4 +12,9 @@ foodRouter.get("/:category", getFoodCategoryById);
 foodRouter.get("/", getFoodById);
 foodRouter.patch("/:foodId", updateFood);
 foodRouter.delete("/:foodId", deleteFood);
-foodRouter.post("./:createFood", authentication, authorization, createNewFood);
+foodRouter.post(
+  "/create-food",
+  authentication,
+  authorization(UserRole.ADMIN),
+  createNewFood,
+);

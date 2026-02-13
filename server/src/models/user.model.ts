@@ -1,6 +1,6 @@
 import { model, models, ObjectId, Schema, Model } from "mongoose";
 
-enum UserRole {
+export enum UserRole {
   USER = "USER",
   ADMIN = "ADMIN",
 }
@@ -28,6 +28,7 @@ export const UserSchema = new Schema<User>(
       type: String,
       enum: Object.values(UserRole),
       default: UserRole.USER,
+      required: true,
     },
     orderedFoods: { type: Schema.Types.ObjectId, ref: "Food" },
     ttl: { type: Date },

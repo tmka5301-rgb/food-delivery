@@ -11,7 +11,7 @@ export const createNewFood = async (req: Request, res: Response) => {
       ingredients,
       category,
     });
-    res.status(200).send({ message: "List created", data: foodAPI });
+    res.status(200).send({ message: "New food created", data: foodAPI });
   } catch (error) {
     console.log(error);
     res.status(400).send(error);
